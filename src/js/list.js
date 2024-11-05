@@ -18,7 +18,7 @@ export const updateDoneTasksTotal = () => {
 export const deleteList = (listId) => {
   const list = document.querySelector(`#${listId}`);
   if (window.confirm("Are you sure you want to delete?")) {
-    list.classList.add("animate__animated", "animate__zoomOut");
+    list.classList.add("animate__animated", "animate__backOutRight");
     list.addEventListener("animationend", () => {
       list.remove();
       updateDoneTasksTotal();
@@ -86,7 +86,7 @@ export const doneList = (list) => {
 
 export const addList = (text) => {
   if (text.trim()) {
-    listGroup.append(createNewList(text));
+    listGroup.prepend(createNewList(text));
     taskInput.value = null;
     updateTasksTotal();
   }

@@ -7,14 +7,17 @@
     <link rel="stylesheet" href="./src/output.css" />
   </head>
   <body class="bg-slate-200">
-    <main class="mx-auto mt-10 min-h-[500px] max-w-[400px] bg-white p-10">
+    <main
+      class="hover:xl mx-auto mt-10 min-h-[500px] max-w-[400px] bg-white p-10 shadow-md"
+    >
       <header class="mb-3">
-        <h1 class="font-serif text-3xl font-bold text-stone-900">To Do List</h1>
+        <h1 class="font-sans text-3xl font-bold text-stone-900">To Do List</h1>
       </header>
       <section class="flex justify-between bg-slate-200">
         <input
           id="taskInput"
           type="text"
+          placeholder="study maths for 3 hours"
           class="flex-grow border border-stone-950 ps-3 focus-visible:outline-black"
         />
         <button
@@ -40,7 +43,7 @@
 
       <section>
         <div class="mb-3 mt-3 flex justify-between">
-          <h4 class="font-serif text-xl font-bold">Your list</h4>
+          <h4 class="font-sans text-xl font-bold">Your list</h4>
           <div
             class="status flex items-center justify-center gap-2 rounded-full bg-stone-950 px-5 text-sm text-white"
           >
@@ -51,7 +54,7 @@
         </div>
 
         <div class="list-group" id="listGroup">
-          <div class="empty-stage hidden last:block">
+          <div class="empty-stage hidden first:block">
             <div class="mt-20 flex flex-col items-center justify-center gap-3">
               <p>There is no list yet.</p>
               <img src="./src/img/empty.svg" class="w-20" alt="" />
@@ -64,7 +67,7 @@
     <section class="flex items-center justify-center gap-3">
       <button
         id="deleteAll"
-        class="mt-3 flex items-center gap-3 bg-red-700 px-4 py-2 font-serif text-stone-50"
+        class="mt-3 flex items-center gap-3 bg-red-700 px-4 py-2 font-sans text-slate-200 shadow-2xl"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -85,7 +88,7 @@
 
       <button
         id="doneAll"
-        class="mt-3 flex items-center gap-3 bg-stone-950 px-4 py-2 font-serif text-stone-50"
+        class="mt-3 flex items-center gap-3 bg-stone-700 px-4 py-2 font-sans text-slate-200"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -101,7 +104,6 @@
             d="m4.5 12.75 6 6 9-13.5"
           />
         </svg>
-
         Done All
       </button>
     </section>
@@ -109,7 +111,7 @@
     <template id="listTemplate">
       <div class="list">
         <div
-          class="animate__animated animate__zoomIn mb-3 flex justify-between border border-stone-950 p-3"
+          class="animate__animated animate__zoomIn mb-3 flex justify-between border p-3 shadow-md hover:shadow-lg"
         >
           <div class="flex items-center gap-3">
             <input type="checkbox" class="list-done-check accent-stone-950" />
@@ -134,6 +136,7 @@
                 />
               </svg>
             </button>
+
             <button
               class="list-del-btn border border-red-700 p-2 duration-200 active:scale-90"
             >

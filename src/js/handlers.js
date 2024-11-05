@@ -8,7 +8,7 @@ export const listGroupHandler = (event) => {
   }
 
   if (event.target.classList.contains("list-edit-btn")) {
-    editList(list);
+    editList(list.id);
   }
 
   if (event.target.classList.contains("list-done-check")) {
@@ -20,7 +20,7 @@ export const addTaskBtnHandler = () => {
   if (taskInput.value.trim()) {
     addList(taskInput.value);
   } else {
-    alert("Please input text");
+    alert("Please enter text");
   }
 };
 
