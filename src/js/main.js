@@ -1,3 +1,4 @@
-import listener from "./listeners.js";
+import Todo from "./Todo.js";
 
-listener();
+const app = new Todo();
+app.init();

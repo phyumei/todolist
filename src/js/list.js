@@ -1,3 +1,5 @@
+export const tasks = ["Call mom", "Buy groceries", "Buy cat food"];
+
 export const createNewList = (currentTask) => {
   const list = listTemplate.content.cloneNode(true);
   list.querySelector(".list").id = "list" + Date.now();
@@ -21,8 +23,6 @@ export const deleteList = (listId) => {
     list.classList.add("animate__animated", "animate__backOutRight");
     list.addEventListener("animationend", () => {
       list.remove();
-      updateDoneTasksTotal();
-      updateTasksTotal();
     });
   }
 };
@@ -81,13 +81,11 @@ export const doneList = (list) => {
   } else {
     listEditBtn.removeAttribute("disabled");
   }
-  updateDoneTasksTotal();
 };
 
 export const addList = (text) => {
   if (text.trim()) {
     listGroup.prepend(createNewList(text));
     taskInput.value = null;
-    updateTasksTotal();
   }
 };

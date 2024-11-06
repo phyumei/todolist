@@ -38,15 +38,28 @@ export const listGroupEnterHandler = (event) => {
 export const deleteAllHandler = () => {
   if (confirm("Are you sure you want to remove all lists?")) {
     const allList = listGroup.querySelectorAll(".list");
-    allList.forEach((list) => list.remove());
+    allList.forEach((list) => {
+      list.classList.add("animate__animated", "animate__backOutRight");
+      list.addEventListener("animationend", () => {
+        list.remove();
+      });
+    });
   }
 };
 
 export const doneAllHandler = () => {
-  if (confirm("Are you sure you want to mark done all lists?")) {
-    const allList = listGroup.querySelectorAll(".list");
+  const allList = listGroup.querySelectorAll(".list");
+  const markAllDone = Array.from(allList).some(
+    (list) => !list.querySelector(".list-done-check").checked,
+  );
+
+  if (
+    confirm(
+      `Are you sure you want to ${markAllDone ? "mark" : "unmark"} all lists as done?`,
+    )
+  ) {
     allList.forEach((list) => {
-      list.querySelector(".list-done-check").checked = true;
+      list.querySelector(".list-done-check").checked = markAllDone;
       doneList(list);
     });
   }
