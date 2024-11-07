@@ -5,7 +5,7 @@ export const tasks = ["Call mom", "Buy groceries", "Buy cat food"];
 
 export const createNewList = (currentTask) => {
   const list = listTemplate.content.cloneNode(true);
-  list.querySelector(".list").id = "list" + Date();
+  list.querySelector(".list").id = "list" + Date.now();
   list.querySelector(".list-task").innerText = currentTask;
   return list;
 };
@@ -22,20 +22,26 @@ export const updateDoneTasksTotal = () => {
 
 export const deleteList = (listId) => {
   const list = document.querySelector(`#${listId}`);
-  Swal.fire({
-    title: "Are you sure you want to delete?",
-    text: "You won't be able to revert this!",
-    icon: "warning",
-    showCancelButton: true,
-    confirmButtonText: "Yes, delete it!",
-  }).then((result) => {
-    if (result.isConfirmed) {
-      list.classList.add("animate__animated", "animate__backOutRight");
-      list.addEventListener("animationend", () => {
-        list.remove();
-      });
-    }
-  });
+  if (window.confirm("Are you sure to delete ?")) {
+    list.classList.add("animate__animated", "animate__fadeOutRight");
+    list.addEventListener("animationend", () => {
+      list.remove();
+    });
+  }
+  // Swal.fire({
+  //   title: "Are you sure you want to delete?",
+  //   text: "You won't be able to revert this!",
+  //   icon: "warning",
+  //   showCancelButton: true,
+  //   confirmButtonText: "Yes, delete it!",
+  // }).then((result) => {
+  //   if (result.isConfirmed) {
+  //     list.classList.add("animate__animated", "animate__backOutRight");
+  //     list.addEventListener("animationend", () => {
+  //       list.remove();
+  //     });
+  //   }
+  // });
 };
 
 export const editList = (listID) => {
