@@ -39,7 +39,7 @@ export const deleteAllHandler = () => {
   if (confirm("Are you sure you want to remove all lists?")) {
     const allList = listGroup.querySelectorAll(".list");
     allList.forEach((list) => {
-      list.classList.add("animate__animated", "animate__backOutRight");
+      list.classList.add("animate__animated", "animate__fadeOutRight");
       list.addEventListener("animationend", () => {
         list.remove();
       });

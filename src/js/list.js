@@ -22,7 +22,7 @@ export const updateDoneTasksTotal = () => {
 
 export const deleteList = (listId) => {
   const list = document.querySelector(`#${listId}`);
-  if (window.confirm("Are you sure to delete ?")) {
+  if (window.confirm("Are you sure you want to delete ?")) {
     list.classList.add("animate__animated", "animate__fadeOutRight");
     list.addEventListener("animationend", () => {
       list.remove();
