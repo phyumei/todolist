@@ -1,11 +1,11 @@
-@import url("../node_modules/animate.css/animate.css");
-/* @import url("../node_modules/sweetalert2/dist/sweetalert2.min.css"); */
+@import url("./node_modules/animate.css/animate.css");
+@import url("./node_modules/sweetalert2/dist/sweetalert2.min.css");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* .swal2-confirm {
+.swal2-confirm {
   @apply rounded-none bg-red-700 text-stone-100 !important;
 }
 
@@ -15,4 +15,4 @@
 
 .swal2-popup {
   @apply rounded-none;
-} */
+}

@@ -1,11 +1,11 @@
-// import Swal from "./node_modules/sweetalert2/dist/sweetalert2.min.js";
-// import { v4 as uuidv4 } from "uuid";
+import Swal from "sweetalert2";
+import { v4 as uuidv4 } from "uuid";
 
 export const tasks = ["Call mom", "Buy groceries", "Buy cat food"];
 
 export const createNewList = (currentTask) => {
   const list = listTemplate.content.cloneNode(true);
-  list.querySelector(".list").id = "list" + Date.now();
+  list.querySelector(".list").id = "list" + uuidv4();
   list.querySelector(".list-task").innerText = currentTask;
   return list;
 };
@@ -22,26 +22,20 @@ export const updateDoneTasksTotal = () => {
 
 export const deleteList = (listId) => {
   const list = document.querySelector(`#${listId}`);
-  if (window.confirm("Are you sure you want to delete ?")) {
-    list.classList.add("animate__animated", "animate__fadeOutRight");
-    list.addEventListener("animationend", () => {
-      list.remove();
-    });
-  }
-  // Swal.fire({
-  //   title: "Are you sure you want to delete?",
-  //   text: "You won't be able to revert this!",
-  //   icon: "warning",
-  //   showCancelButton: true,
-  //   confirmButtonText: "Yes, delete it!",
-  // }).then((result) => {
-  //   if (result.isConfirmed) {
-  //     list.classList.add("animate__animated", "animate__backOutRight");
-  //     list.addEventListener("animationend", () => {
-  //       list.remove();
-  //     });
-  //   }
-  // });
+  Swal.fire({
+    title: "Are you sure you want to delete?",
+    text: "You won't be able to revert this!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonText: "Yes, delete it!",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      list.classList.add("animate__animated", "animate__backOutRight");
+      list.addEventListener("animationend", () => {
+        list.remove();
+      });
+    }
+  });
 };
 
 export const editList = (listID) => {
