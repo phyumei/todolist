@@ -1,3 +1,4 @@
+import Swal from "sweetalert2";
 import { addList, deleteList, doneList, editList } from "./list.js";
 import { listGroup } from "./selectors.js";
 
@@ -36,15 +37,28 @@ export const listGroupEnterHandler = (event) => {
 };
 
 export const deleteAllHandler = () => {
-  if (confirm("Are you sure you want to remove all lists?")) {
-    const allList = listGroup.querySelectorAll(".list");
-    allList.forEach((list) => {
-      list.classList.add("animate__animated", "animate__fadeOutRight");
-      list.addEventListener("animationend", () => {
-        list.remove();
+  Swal.fire({
+    title: "Are you sure you want to delete all lists?",
+    text: "You won't be able to revert this!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonText: "Yes, delete them!",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      Swal.fire({
+        title: "Deleted!",
+        text: "All your lists have been deleted.",
+        icon: "success",
       });
-    });
-  }
+      const allList = listGroup.querySelectorAll(".list");
+      allList.forEach((list) => {
+        list.classList.add("animate__animated", "animate__fadeOutRight");
+        list.addEventListener("animationend", () => {
+          list.remove();
+        });
+      });
+    }
+  });
 };
 
 export const doneAllHandler = () => {
@@ -53,14 +67,16 @@ export const doneAllHandler = () => {
     (list) => !list.querySelector(".list-done-check").checked,
   );
 
-  if (
-    confirm(
-      `Are you sure you want to ${markAllDone ? "mark" : "unmark"} all lists as done?`,
-    )
-  ) {
-    allList.forEach((list) => {
-      list.querySelector(".list-done-check").checked = markAllDone;
-      doneList(list);
-    });
-  }
+  Swal.fire({
+    title: `Are you sure you want to ${markAllDone ? "mark" : "unmark"} all lists as done?`,
+    showCancelButton: true,
+    confirmButtonText: `Yes, ${markAllDone ? "mark" : "unmark"} it!`,
+  }).then((result) => {
+    if (result.isConfirmed) {
+      allList.forEach((list) => {
+        list.querySelector(".list-done-check").checked = markAllDone;
+        doneList(list);
+      });
+    }
+  });
 };

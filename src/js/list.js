@@ -30,7 +30,7 @@ export const deleteList = (listId) => {
     confirmButtonText: "Yes, delete it!",
   }).then((result) => {
     if (result.isConfirmed) {
-      list.classList.add("animate__animated", "animate__backOutRight");
+      list.classList.add("animate__animated", "animate__fadeOutRight");
       list.addEventListener("animationend", () => {
         list.remove();
       });

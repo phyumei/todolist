@@ -6,13 +6,9 @@
 @tailwind utilities;
 
 .swal2-confirm {
-  @apply rounded-none bg-red-700 text-stone-100 !important;
+  @apply bg-red-700 text-stone-100 !important;
 }
 
 .swal2-cancel {
-  @apply rounded-none bg-stone-400 text-stone-100 !important;
-}
-
-.swal2-popup {
-  @apply rounded-none;
+  @apply bg-stone-400 text-stone-100 !important;
 }

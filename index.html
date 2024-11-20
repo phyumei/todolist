@@ -4,16 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>To-Do List</title>
-    <link rel="icon" href="./src/img/logo.png">
+    <link rel="icon" href="./src/img/logo.png" />
   </head>
   <body class="bg-slate-200">
     <main
-      class="mx-auto mt-10 min-h-[500px] max-w-[400px] bg-white p-10 shadow-md hover:shadow-xl"
+      class="mx-auto mt-10 min-h-[500px] max-w-[400px] rounded-lg bg-white p-10 shadow-md hover:shadow-xl"
     >
       <header class="mb-3">
-        <h1 class="font-sans text-3xl font-bold text-stone-900">To Do List</h1>
+        <h1 class="select-none font-sans text-3xl font-bold text-stone-900">
+          To Do List
+        </h1>
       </header>
-      <section class="flex justify-between bg-slate-200">
+      <section class="flex select-none justify-between bg-slate-200">
         <input
           id="taskInput"
           type="text"
@@ -43,9 +45,9 @@
 
       <section>
         <div class="mb-3 mt-3 flex justify-between">
-          <h4 class="font-sans text-xl font-bold">Your list</h4>
+          <h4 class="select-none font-sans text-xl font-bold">Your list</h4>
           <div
-            class="status flex items-center justify-center gap-2 rounded-full bg-stone-950 px-5 text-sm text-white"
+            class="status flex select-none items-center justify-center gap-2 rounded-full bg-stone-950 px-5 text-sm text-white"
           >
             <span id="doneTasksTotal">0</span>
             <span>/</span>
@@ -67,7 +69,7 @@
     <section class="flex items-center justify-center gap-3">
       <button
         id="deleteAll"
-        class="mt-3 flex items-center gap-3 bg-red-700 px-4 py-2 font-sans text-slate-200 shadow-2xl"
+        class="mt-3 flex select-none items-center gap-3 px-4 py-2 font-sans text-red-700 underline"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -88,7 +90,7 @@
 
       <button
         id="doneAll"
-        class="mt-3 flex items-center gap-3 bg-stone-700 px-4 py-2 font-sans text-slate-200"
+        class="mt-3 flex select-none items-center gap-3 rounded-sm bg-stone-700 px-4 py-2 font-sans text-white"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -111,7 +113,7 @@
     <template id="listTemplate">
       <div class="list">
         <div
-          class="animate__animated animate__zoomIn mb-3 flex justify-between border p-3 shadow-md hover:shadow-lg"
+          class="animate__animated animate__zoomIn mb-3 flex select-none justify-between rounded-md border border-slate-300 p-3 shadow-md hover:shadow-lg"
         >
           <div class="flex items-center gap-3">
             <input type="checkbox" class="list-done-check accent-stone-950" />
